@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getApiBaseUrl, normalizeResponse } from '../utils/api.js';
+// Environment-aware OctoFit users endpoint.
 
 export default function Users() {
   const [users, setUsers] = useState([]);

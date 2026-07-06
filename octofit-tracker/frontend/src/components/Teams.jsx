@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getApiBaseUrl, normalizeResponse } from '../utils/api.js';
+// Environment-aware OctoFit teams endpoint.
 
 export default function Teams() {
   const [teams, setTeams] = useState([]);

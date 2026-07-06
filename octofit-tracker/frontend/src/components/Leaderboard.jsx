@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getApiBaseUrl, normalizeResponse } from '../utils/api.js';
+// Environment-aware OctoFit leaderboard endpoint.
 
 export default function Leaderboard() {
   const [entries, setEntries] = useState([]);

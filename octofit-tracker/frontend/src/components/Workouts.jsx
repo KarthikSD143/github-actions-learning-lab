@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getApiBaseUrl, normalizeResponse } from '../utils/api.js';
+// Environment-aware OctoFit workouts endpoint.
 
 export default function Workouts() {
   const [workouts, setWorkouts] = useState([]);

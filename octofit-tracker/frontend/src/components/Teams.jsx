@@ -1,6 +1,20 @@
 import { useEffect, useState } from 'react';
-import { getApiBaseUrl, normalizeResponse } from '../utils/api.js';
-// Environment-aware OctoFit teams endpoint.
+
+function normalizeResponse(data) {
+  if (Array.isArray(data)) {
+    return data;
+  }
+
+  if (data && Array.isArray(data.results)) {
+    return data.results;
+  }
+
+  if (data && Array.isArray(data.items)) {
+    return data.items;
+  }
+
+  return [];
+}
 
 export default function Teams() {
   const [teams, setTeams] = useState([]);
@@ -9,7 +23,10 @@ export default function Teams() {
   useEffect(() => {
     async function loadTeams() {
       try {
-        const response = await fetch(`${getApiBaseUrl()}/api/teams/`);
+        const apiBaseUrl = import.meta.env.VITE_CODESPACE_NAME
+          ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev`
+          : 'http://localhost:8000';
+        const response = await fetch(`${apiBaseUrl}/api/teams/`);
         if (!response.ok) {
           throw new Error('Unable to load teams');
         }
